@@ -11,7 +11,7 @@ function HotelListing({ hotels, showReview }: Props) {
     <div>
       <div className="flex flex-col gap-4">
         {hotels.map((hotel) => (
-          <HotelCard key={hotel.id} hotel={hotel} onCardClick={showReview} />
+          <HotelCard key={hotel.id} hotel={hotel} onReviewClick={showReview} />
         ))}
       </div>
     </div>

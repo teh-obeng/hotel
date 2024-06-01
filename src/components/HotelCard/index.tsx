@@ -2,14 +2,14 @@ import { Hotel } from "../../types";
 
 interface Props {
   hotel: Hotel;
-  onCardClick: (hotel: Hotel) => void;
+  onReviewClick: (hotel: Hotel) => void;
 }
 
-function HotelCard({ hotel, onCardClick }: Props) {
+function HotelCard({ hotel, onReviewClick }: Props) {
   const hasReview = hotel.reviews && hotel.reviews.length > 0;
 
   function onClick() {
-    hasReview && onCardClick(hotel);
+    hasReview && onReviewClick(hotel);
   }
 
   return (

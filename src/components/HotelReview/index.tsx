@@ -20,7 +20,7 @@ function HotelReview({ hotel, onClose }: Props) {
 
     return () => {
       document.body.style.overflow = "";
-    document.body.style.paddingRight = "";
+      document.body.style.paddingRight = "";
     };
   }, []);
 
@@ -40,11 +40,11 @@ function HotelReview({ hotel, onClose }: Props) {
 
   return (
     <div
-      className="fixed inset-0 px-10 z-[9999] bg-gray-200/50 h-screen"
+      className="fixed inset-0 p-10 z-[9999] bg-gray-200/50 h-screen"
       ref={container}
       onClick={(e) => e.target === container.current && onClose()}
     >
-      <div className="container mx-auto bg-white xl:max-w-[50%] p-4 flex flex-col h-full">
+      <div className="container mx-auto bg-white xl:max-w-[50%] p-4 flex flex-col h-full rounded">
         <button type="button" onClick={onClose} className="w-fit self-end">
           <CloseIcon />
         </button>
