@@ -23,6 +23,7 @@ function HotelCard({ hotel, onReviewClick }: Props) {
         <p className="text-xs text-gray-400">{hotel.address}</p>
         <div className="flex flex-col mt-auto self-end font-thin">
           <div
+            data-testid="see-review-btn"
             onClick={onClick}
             className={`${
               hotel.rating > 7 ? "bg-blue-500" : "bg-yellow-500"

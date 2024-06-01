@@ -40,18 +40,25 @@ function HotelReview({ hotel, onClose }: Props) {
 
   return (
     <div
+      data-testid="container"
       className="fixed inset-0 p-10 z-[9999] bg-gray-200/50 h-screen"
       ref={container}
       onClick={(e) => e.target === container.current && onClose()}
     >
       <div className="container mx-auto bg-white xl:max-w-[50%] p-4 flex flex-col h-full rounded">
-        <button type="button" onClick={onClose} className="w-fit self-end">
+        <button
+          data-testid="close-btn"
+          type="button"
+          onClick={onClose}
+          className="w-fit self-end"
+        >
           <CloseIcon />
         </button>
         <h1 className="font-bold text-lg">{hotel.name}'s Reviews</h1>
         <div>Search Review:</div>
         <div className="flex flex-row gap-2 align-center mb-4">
           <input
+            data-testid="filter-input"
             type="text"
             className="border border-gray-400 rounded px-2"
             value={keyword}
@@ -67,7 +74,11 @@ function HotelReview({ hotel, onClose }: Props) {
         </div>
         <div className="overflow-y-auto">
           {filteredReviews.map((r, i) => (
-            <div key={i} className="my-4 border p-4 rounded">
+            <div
+              data-testid="review"
+              key={i}
+              className="my-4 border p-4 rounded"
+            >
               <h1 className="text-lg">{r.user.name}</h1>
               <h3 className="text-gray-400 text-sm">{r.user.location}</h3>
               <h2 className="font-bold">{r.title}</h2>

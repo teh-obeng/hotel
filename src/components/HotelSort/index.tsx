@@ -19,6 +19,7 @@ function HotelSort({ onChange, sort }: Props) {
             type="radio"
             id="lowest-sort"
             name="sort"
+            data-testid="lowest-sort"
             onChange={() => onChange(HotelSortOption.LOWEST)}
             checked={sort === HotelSortOption.LOWEST}
           ></input>
@@ -29,6 +30,7 @@ function HotelSort({ onChange, sort }: Props) {
             type="radio"
             id="highest-sort"
             name="sort"
+            data-testid="highest-sort"
             onChange={() => onChange(HotelSortOption.HIGHEST)}
             checked={sort === HotelSortOption.HIGHEST}
           ></input>
@@ -39,6 +41,7 @@ function HotelSort({ onChange, sort }: Props) {
             type="radio"
             id="recommended-sort"
             name="sort"
+            data-testid="recommended-sort"
             onChange={() => onChange(HotelSortOption.RECOMMENDED)}
             checked={sort === HotelSortOption.RECOMMENDED || !sort}
           ></input>
