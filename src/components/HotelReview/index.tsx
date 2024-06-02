@@ -40,7 +40,7 @@ function HotelReview({ hotel, onClose }: Props) {
 
   return (
     <div
-      data-testid="container"
+      data-testid="hotel-review"
       className="fixed inset-0 p-10 z-[9999] bg-gray-200/50 h-screen"
       ref={container}
       onClick={(e) => e.target === container.current && onClose()}

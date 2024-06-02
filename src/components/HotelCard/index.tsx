@@ -13,7 +13,7 @@ function HotelCard({ hotel, onReviewClick }: Props) {
   }
 
   return (
-    <div className="flex bg-white rounded-lg overflow-hidden hover:border-blue-500 border border-gray-200">
+    <div className="flex bg-white rounded-lg overflow-hidden hover:border-blue-500 border border-gray-200" data-testid="hotel-card">
       <div className="basis-1/3">
         <img className="w-full h-[182px] object-cover" src={hotel.photo} />
       </div>

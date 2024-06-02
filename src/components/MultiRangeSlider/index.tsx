@@ -4,8 +4,7 @@ import "./index.css";
 interface Props {
   min: number;
   max: number;
-  currentMin: number;
-  currentMax: number;
+  current: { min: number; max: number };
   valPrefix?: string;
   onChange: (min: number, max: number) => void;
 }
@@ -13,12 +12,12 @@ interface Props {
 function MultiRangeSlider({
   min,
   max,
-  currentMin,
-  currentMax,
+  current,
   valPrefix = "",
   onChange,
 }: Props) {
   const range = useRef<HTMLDivElement>(null);
+  const { min: currentMin, max: currentMax } = current;
 
   // Convert to percentage
   const getPercent = useCallback(
@@ -38,8 +37,9 @@ function MultiRangeSlider({
   }, [currentMin, currentMax, getPercent]);
 
   return (
-    <div className="py-4">
+    <div className="py-4" data-testid="multi-range-slider">
       <input
+        data-testid="left-slider"
         type="range"
         min={min}
         max={max}
@@ -51,6 +51,7 @@ function MultiRangeSlider({
         className="thumb thumb--left"
       />
       <input
+        data-testid="right-slider"
         type="range"
         min={min}
         max={max}

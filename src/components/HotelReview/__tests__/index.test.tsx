@@ -114,7 +114,7 @@ describe("Hotel Review", () => {
     const fn = vi.fn();
     render(<HotelReview hotel={hotel} onClose={fn} />);
 
-    const container = await screen.getByTestId("container");
+    const container = await screen.getByTestId("hotel-review");
     container.click();
 
     expect(fn).toHaveBeenCalledOnce();

@@ -42,7 +42,7 @@ function App() {
         </CenterText>
       ) : (
         <>
-          <div className="flex">
+          <div className="flex w-full">
             <div className="basis-1/3">
               <HotelFilter hotels={hotels} onFilterSort={onFilterSort} />
             </div>

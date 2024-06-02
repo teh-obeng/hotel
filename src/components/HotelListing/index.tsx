@@ -8,7 +8,7 @@ interface Props {
 
 function HotelListing({ hotels, showReview }: Props) {
   return (
-    <div>
+    <div data-testid="hotel-listing">
       <div className="flex flex-col gap-4">
         {hotels.map((hotel) => (
           <HotelCard key={hotel.id} hotel={hotel} onReviewClick={showReview} />

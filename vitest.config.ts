@@ -6,6 +6,7 @@ export default mergeConfig(
   defineConfig({
     test: {
       environment: "jsdom",
+      setupFiles: ["@testing-library/jest-dom/vitest"],
     },
   })
 );

@@ -21,7 +21,7 @@ describe("Hotel Sort", () => {
     expect(checkbox.checked).toBe(true);
   });
 
-  it("should check option based on `sort`", async () => {
+  it("should check option based on `sort` property", async () => {
     render(<HotelSort onChange={() => {}} sort={HotelSortOption.HIGHEST} />);
 
     const checkbox = await screen.findByTestId<HTMLInputElement>(
@@ -31,7 +31,7 @@ describe("Hotel Sort", () => {
     expect(checkbox.checked).toBe(true);
   });
 
-  it("should trigger event on change of sort", async () => {
+  it("should trigger event on change of sort option", async () => {
     const change = vi.fn();
 
     render(<HotelSort onChange={change} sort={HotelSortOption.HIGHEST} />);

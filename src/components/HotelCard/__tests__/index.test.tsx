@@ -40,6 +40,13 @@ describe("HotelCard", () => {
       expect(fn).toHaveBeenCalledOnce();
       expect(fn).toHaveBeenCalledWith(hotel);
     });
+
+    it("should show See Reviews text", async () => {
+      render(<HotelCard hotel={hotel} onReviewClick={() => {}} />);
+
+      const text = await screen.findByText("8 | See Reviews (1)");
+      expect(text).toBeVisible();
+    });
   });
 
   describe("When no reviews", () => {
@@ -63,6 +70,14 @@ describe("HotelCard", () => {
       el.click();
 
       expect(fn).not.toHaveBeenCalled();
+    });
+
+    it("should NOT show See Reviews text", async () => {
+      render(<HotelCard hotel={hotel} onReviewClick={() => {}} />);
+
+      const text = await screen.queryByText(/See Reviews/);
+
+      expect(text).toBe(null);
     });
   });
 });

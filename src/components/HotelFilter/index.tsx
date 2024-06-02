@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Hotel } from "../../types";
 import MultiRangeSlider from "../MultiRangeSlider";
 import HotelSort, { HotelSortOption } from "../HotelSort";
@@ -17,9 +17,13 @@ interface Props {
 }
 
 function HotelFilter({ hotels, onFilterSort }: Props) {
-  const prices = hotels.map((h) => h.price);
-  const starRatings = new Set(hotels.map((h) => h.stars));
-  const reviewRatings = new Set(hotels.map((h) => Math.floor(h.rating)));
+  const { prices, starRatings, reviewRatings } = useMemo(() => {
+    const prices = hotels.map((h) => h.price);
+    const starRatings = new Set(hotels.map((h) => h.stars));
+    const reviewRatings = new Set(hotels.map((h) => Math.floor(h.rating)));
+
+    return { prices, starRatings, reviewRatings };
+  }, [hotels]);
 
   const [keyword, setKeyword] = useState("");
   const [priceRange, setPriceRange] = useState({
@@ -92,6 +96,7 @@ function HotelFilter({ hotels, onFilterSort }: Props) {
     });
     setStars([]);
     setRatings([]);
+    setSort(HotelSortOption.RECOMMENDED);
     onFilterSort({});
   }
 
@@ -120,11 +125,12 @@ function HotelFilter({ hotels, onFilterSort }: Props) {
   }
 
   return (
-    <div className="w-fit py-4 px-10 bg-white rounded-lg mx-auto">
+    <div className="w-fit py-4 px-10 bg-white rounded-lg mx-auto" data-testid="hotel-filter">
       <h1 className="font-bold">Filter</h1>
       <div>
         <h1>Name</h1>
         <input
+          data-testid="keyword-filter-input"
           className="border border-gray-300 rounded px-2"
           type="text"
           value={keyword}
@@ -143,8 +149,7 @@ function HotelFilter({ hotels, onFilterSort }: Props) {
           <MultiRangeSlider
             onChange={updatePriceRange}
             valPrefix="$"
-            currentMin={priceRange.min}
-            currentMax={priceRange.max}
+            current={priceRange}
             min={Math.min(...prices)}
             max={Math.max(...prices)}
           />
