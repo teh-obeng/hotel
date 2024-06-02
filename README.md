@@ -10,3 +10,6 @@
 ## Tests
 - npm run test
 - npm run coverage
+
+## Small note
+- To see hotel's review, please click on `X.X | See reviews (X)` button
