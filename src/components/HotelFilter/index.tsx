@@ -34,49 +34,32 @@ function HotelFilter({ hotels, onFilterSort }: Props) {
   const [ratings, setRatings] = useState<number[]>([]);
   const [sort, setSort] = useState<HotelSortOption | undefined>();
 
-  function generateStars() {
-    const views = [];
-    for (const star of starRatings) {
-      views.push(
-        <div key={star}>
-          <label htmlFor={`${star}-stars`} className="hover:cursor-pointer">
-            <input
-              checked={stars.includes(star)}
-              onChange={(e) => updateStar(star, e.target.checked)}
-              type="checkbox"
-              id={`${star}-stars`}
-              value={star}
-            />
-            <span className="text-sm">&nbsp;{star} stars</span>
-          </label>
-        </div>
-      );
-    }
-
-    return <div>{views}</div>;
-  }
-
-  function generateReviewRatings() {
-    const views = [];
-    for (const rating of reviewRatings) {
-      views.push(
-        <div key={rating}>
-          <label htmlFor={`${rating}-ratings`} className="hover:cursor-pointer">
-            <input
-              checked={ratings.includes(rating)}
-              onChange={(e) => updateRating(rating, e.target.checked)}
-              type="checkbox"
-              id={`${rating}-ratings`}
-              value={rating}
-            />
-            <span className="text-sm">&nbsp;{rating}+ ratings</span>
-          </label>
-        </div>
-      );
-    }
-
-    return <div>{views}</div>;
-  }
+  const generateCheckboxes = (
+    items: number[] | Set<number>,
+    selectedItems: number[],
+    update: (item: number, isChecked: boolean) => void,
+    labelSuffix: string
+  ) => {
+    return Array.from(items).map((item) => (
+      <div key={`${item}-${labelSuffix}`}>
+        <label
+          htmlFor={`${item}-${labelSuffix}`}
+          className="hover:cursor-pointer"
+        >
+          <input
+            checked={selectedItems.includes(item)}
+            onChange={(e) => update(item, e.target.checked)}
+            type="checkbox"
+            id={`${item}-${labelSuffix}`}
+            value={item}
+          />
+          <span className="text-sm">
+            &nbsp;{item}{labelSuffix}
+          </span>
+        </label>
+      </div>
+    ));
+  };
 
   function updateParam() {
     onFilterSort({
@@ -125,7 +108,10 @@ function HotelFilter({ hotels, onFilterSort }: Props) {
   }
 
   return (
-    <div className="w-fit py-4 px-10 bg-white rounded-lg mx-auto" data-testid="hotel-filter">
+    <div
+      className="w-fit py-4 px-10 bg-white rounded-lg mx-auto"
+      data-testid="hotel-filter"
+    >
       <h1 className="font-bold">Filter</h1>
       <div>
         <h1>Name</h1>
@@ -140,7 +126,7 @@ function HotelFilter({ hotels, onFilterSort }: Props) {
       <br />
       <div>
         <h1>Star Rating</h1>
-        <div>{generateStars()}</div>
+        <div>{generateCheckboxes(starRatings, stars, updateStar, " stars")}</div>
       </div>
       <br />
       <div>
@@ -158,7 +144,7 @@ function HotelFilter({ hotels, onFilterSort }: Props) {
       <br />
       <div>
         <h1>Review Rating</h1>
-        <div>{generateReviewRatings()}</div>
+        <div>{generateCheckboxes(reviewRatings, ratings, updateRating, "+ ratings")}</div>
       </div>
       <br />
       <HotelSort onChange={updateSort} sort={sort} />
