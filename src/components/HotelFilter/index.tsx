@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
-import { Hotel } from "../../types";
+import { Hotel, HotelSortOption } from "../../types";
 import MultiRangeSlider from "../MultiRangeSlider";
-import HotelSort, { HotelSortOption } from "../HotelSort";
+import HotelSort from "../HotelSort";
 
 export interface FilterSortParam {
   name?: string;

@@ -7,8 +7,7 @@ import {
 } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import HotelFilter from "..";
-import { Hotel } from "../../../types";
-import { HotelSortOption } from "../../HotelSort";
+import { Hotel, HotelSortOption } from "../../../types";
 
 describe("Hotel Filter & Sort", () => {
   afterEach(() => {

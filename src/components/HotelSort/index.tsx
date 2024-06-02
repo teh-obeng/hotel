@@ -1,8 +1,4 @@
-export enum HotelSortOption {
-  LOWEST = "LOWEST",
-  HIGHEST = "HIGHEST",
-  RECOMMENDED = "RECOMMENDED",
-}
+import { HotelSortOption } from "../../types";
 
 export interface Props {
   sort?: HotelSortOption;

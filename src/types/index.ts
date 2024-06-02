@@ -20,3 +20,9 @@ export interface Hotel {
     description: string;
     reviews?: Array<Review>
 }
+
+export enum HotelSortOption {
+  LOWEST = "LOWEST",
+  HIGHEST = "HIGHEST",
+  RECOMMENDED = "RECOMMENDED",
+}

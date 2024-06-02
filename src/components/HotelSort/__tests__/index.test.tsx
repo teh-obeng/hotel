@@ -4,7 +4,8 @@ import {
   screen,
 } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import HotelSort, { HotelSortOption } from "..";
+import HotelSort from "..";
+import { HotelSortOption } from "../../../types";
 
 describe("Hotel Sort", () => {
   afterEach(() => {

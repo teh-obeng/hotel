@@ -1,6 +1,5 @@
 import { FilterSortParam } from "../components/HotelFilter";
-import { HotelSortOption } from "../components/HotelSort";
-import { Hotel } from "../types";
+import { Hotel, HotelSortOption } from "../types";
 
 /**
  * Filter hotels by param

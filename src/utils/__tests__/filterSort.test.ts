@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 
 import { filterAndSortHotels, filterHotels, sortHotelsByPrice } from "../filterSort";
 import { mockHotelsData } from "../../services/__tests__/data";
-import { HotelSortOption } from "../../components/HotelSort";
+import { HotelSortOption } from "../../types";
 
 describe("Filter Sort Utils", () => {
   describe("Filter", () => {
