@@ -87,7 +87,7 @@ describe("Filter Sort Utils", () => {
       );
     });
 
-    it("should return hotels sorted by recommended price", () => {
+    it("should return hotels sorted by recommended price (order returned by server)", () => {
       const hotels = sortHotelsByPrice(mockHotelsData, {
         sort: HotelSortOption.RECOMMENDED,
       });

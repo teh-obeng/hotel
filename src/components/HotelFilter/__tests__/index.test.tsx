@@ -94,6 +94,8 @@ describe("Hotel Filter & Sort", () => {
       expect(input.checked).toBe(false);
       input.click();
       expect(input.checked).toBe(true);
+      input.click();
+      expect(input.checked).toBe(false);
 
       input = fiveStar.parentElement!.querySelector("input")!;
       expect(input).toBeVisible();
@@ -137,6 +139,8 @@ describe("Hotel Filter & Sort", () => {
       expect(input.checked).toBe(false);
       input.click();
       expect(input.checked).toBe(true);
+      input.click();
+      expect(input.checked).toBe(false);
 
       input = eightRatings.parentElement!.querySelector("input")!;
       expect(input).toBeVisible();
